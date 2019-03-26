@@ -34,7 +34,6 @@ entry:
 		MOV		SP,0x7c00
 		MOV		DS,AX
 		MOV		ES,AX
-		
 		MOV		SI,msg
 putloop:
 		MOV		AL,[SI]
@@ -53,11 +52,8 @@ msg:
 		DB		"hello,world"
 		DB		0x0a			; 换行
 		DB		0
-		
 		RESB	0x7dfe-$
-		
 		DB		0x55,0xaa
-		
 		
 ; 以下是启动区以外部分的输出
 

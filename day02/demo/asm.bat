@@ -1,0 +1,1 @@
+..\..\tools\nask.exe os.nas os.img
