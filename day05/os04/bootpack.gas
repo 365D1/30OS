@@ -390,56 +390,56 @@ _putfont8:
 	movb	24(%ebp), %bl
 L43:
 	movl	20(%ebp), %eax
-	movl	16(%ebp), %edx
+	movl	8(%ebp), %edx
 	addl	%esi, %eax
+	movb	(%esi,%edi), %cl
 	imull	12(%ebp), %eax
-	addl	8(%ebp), %eax
-	leal	(%edx,%eax), %ecx
-	movb	(%esi,%edi), %dl
-	testb	%dl, %dl
+	addl	16(%ebp), %edx
+	addl	%eax, %edx
+	testb	%cl, %cl
 	jns	L35
-	movb	%bl, (%ecx)
+	movb	%bl, (%edx)
 L35:
-	movb	%dl, %al
+	movb	%cl, %al
 	andl	$64, %eax
 	testb	%al, %al
 	je	L36
-	movb	%bl, 1(%ecx)
+	movb	%bl, 1(%edx)
 L36:
-	movb	%dl, %al
+	movb	%cl, %al
 	andl	$32, %eax
 	testb	%al, %al
 	je	L37
-	movb	%bl, 2(%ecx)
+	movb	%bl, 2(%edx)
 L37:
-	movb	%dl, %al
+	movb	%cl, %al
 	andl	$16, %eax
 	testb	%al, %al
 	je	L38
-	movb	%bl, 3(%ecx)
+	movb	%bl, 3(%edx)
 L38:
-	movb	%dl, %al
+	movb	%cl, %al
 	andl	$8, %eax
 	testb	%al, %al
 	je	L39
-	movb	%bl, 4(%ecx)
+	movb	%bl, 4(%edx)
 L39:
-	movb	%dl, %al
+	movb	%cl, %al
 	andl	$4, %eax
 	testb	%al, %al
 	je	L40
-	movb	%bl, 5(%ecx)
+	movb	%bl, 5(%edx)
 L40:
-	movb	%dl, %al
+	movb	%cl, %al
 	andl	$2, %eax
 	testb	%al, %al
 	je	L41
-	movb	%bl, 6(%ecx)
+	movb	%bl, 6(%edx)
 L41:
-	andl	$1, %edx
-	testb	%dl, %dl
+	andl	$1, %ecx
+	testb	%cl, %cl
 	je	L33
-	movb	%bl, 7(%ecx)
+	movb	%bl, 7(%edx)
 L33:
 	incl	%esi
 	cmpl	$15, %esi

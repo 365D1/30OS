@@ -52,14 +52,11 @@ void putfonts8_asc(char *vram, int xsize, int x, int y, char c,
 //|       主方法      |
 //---------------------
 void HariMain(void) {
-    char *vram;
-    int xsize, ysize;
-    struct BOOTINFO *binfo;
-    extern char hankaku[4096];
+
+    struct BOOTINFO *binfo = (struct BOOTINFO *) 0x0ff0;
+    
     // 初始化调色板
     init_palette();
-
-    binfo = (struct BOOTINFO *)0x0ff0;
 
     init_screen(binfo->vram, binfo->scrnx, binfo->scrny);
     putfonts8_asc(binfo->vram, binfo->scrnx, 8, 8, COL8_FFFFFF,

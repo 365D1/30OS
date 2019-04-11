@@ -145,34 +145,21 @@ void init_screen(char *vram, int x, int y) {
 
 void putfont8(char *vram, int xsize, int x, int y, char c, char *font) {
     int i;
-    char *p, d /* data */;
+    char *p, d;
     for (i = 0; i < 16; i++) {
-        p = vram + (y + i) * xsize + x;
+        // 公式 0xa0000 + x + y * 320
+        // 根据这个公式，可以计算出（x,y）坐标点对应的内存地址
+        p = vram + x + (y + i) * xsize ;
         d = font[i];
-        if ((d & 0x80) != 0) {
-            p[0] = c;
-        }
-        if ((d & 0x40) != 0) {
-            p[1] = c;
-        }
-        if ((d & 0x20) != 0) {
-            p[2] = c;
-        }
-        if ((d & 0x10) != 0) {
-            p[3] = c;
-        }
-        if ((d & 0x08) != 0) {
-            p[4] = c;
-        }
-        if ((d & 0x04) != 0) {
-            p[5] = c;
-        }
-        if ((d & 0x02) != 0) {
-            p[6] = c;
-        }
-        if ((d & 0x01) != 0) {
-            p[7] = c;
-        }
+        // 0x80  1000000
+        if ((d & 0x80) != 0) { p[0] = c; }
+        if ((d & 0x40) != 0) { p[1] = c; }
+        if ((d & 0x20) != 0) { p[2] = c; }
+        if ((d & 0x10) != 0) { p[3] = c; }
+        if ((d & 0x08) != 0) { p[4] = c; }
+        if ((d & 0x04) != 0) { p[5] = c; }
+        if ((d & 0x02) != 0) { p[6] = c; }
+        if ((d & 0x01) != 0) { p[7] = c; }
     }
     return;
 }

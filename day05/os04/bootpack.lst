@@ -389,62 +389,62 @@
    389 000002CB 8A 5D 18                        	MOV	BL,BYTE [24+EBP]
    390 000002CE                                 L43:
    391 000002CE 8B 45 14                        	MOV	EAX,DWORD [20+EBP]
-   392 000002D1 8B 55 10                        	MOV	EDX,DWORD [16+EBP]
+   392 000002D1 8B 55 08                        	MOV	EDX,DWORD [8+EBP]
    393 000002D4 01 F0                           	ADD	EAX,ESI
-   394 000002D6 0F AF 45 0C                     	IMUL	EAX,DWORD [12+EBP]
-   395 000002DA 03 45 08                        	ADD	EAX,DWORD [8+EBP]
-   396 000002DD 8D 0C 02                        	LEA	ECX,DWORD [EDX+EAX*1]
-   397 000002E0 8A 14 3E                        	MOV	DL,BYTE [ESI+EDI*1]
-   398 000002E3 84 D2                           	TEST	DL,DL
-   399 000002E5 79 02                           	JNS	L35
-   400 000002E7 88 19                           	MOV	BYTE [ECX],BL
-   401 000002E9                                 L35:
-   402 000002E9 88 D0                           	MOV	AL,DL
-   403 000002EB 83 E0 40                        	AND	EAX,64
-   404 000002EE 84 C0                           	TEST	AL,AL
-   405 000002F0 74 03                           	JE	L36
-   406 000002F2 88 59 01                        	MOV	BYTE [1+ECX],BL
-   407 000002F5                                 L36:
-   408 000002F5 88 D0                           	MOV	AL,DL
-   409 000002F7 83 E0 20                        	AND	EAX,32
-   410 000002FA 84 C0                           	TEST	AL,AL
-   411 000002FC 74 03                           	JE	L37
-   412 000002FE 88 59 02                        	MOV	BYTE [2+ECX],BL
-   413 00000301                                 L37:
-   414 00000301 88 D0                           	MOV	AL,DL
-   415 00000303 83 E0 10                        	AND	EAX,16
-   416 00000306 84 C0                           	TEST	AL,AL
-   417 00000308 74 03                           	JE	L38
-   418 0000030A 88 59 03                        	MOV	BYTE [3+ECX],BL
-   419 0000030D                                 L38:
-   420 0000030D 88 D0                           	MOV	AL,DL
-   421 0000030F 83 E0 08                        	AND	EAX,8
-   422 00000312 84 C0                           	TEST	AL,AL
-   423 00000314 74 03                           	JE	L39
-   424 00000316 88 59 04                        	MOV	BYTE [4+ECX],BL
-   425 00000319                                 L39:
-   426 00000319 88 D0                           	MOV	AL,DL
-   427 0000031B 83 E0 04                        	AND	EAX,4
-   428 0000031E 84 C0                           	TEST	AL,AL
-   429 00000320 74 03                           	JE	L40
-   430 00000322 88 59 05                        	MOV	BYTE [5+ECX],BL
-   431 00000325                                 L40:
-   432 00000325 88 D0                           	MOV	AL,DL
-   433 00000327 83 E0 02                        	AND	EAX,2
-   434 0000032A 84 C0                           	TEST	AL,AL
-   435 0000032C 74 03                           	JE	L41
-   436 0000032E 88 59 06                        	MOV	BYTE [6+ECX],BL
-   437 00000331                                 L41:
-   438 00000331 83 E2 01                        	AND	EDX,1
-   439 00000334 84 D2                           	TEST	DL,DL
-   440 00000336 74 03                           	JE	L33
-   441 00000338 88 59 07                        	MOV	BYTE [7+ECX],BL
-   442 0000033B                                 L33:
-   443 0000033B 46                              	INC	ESI
-   444 0000033C 83 FE 0F                        	CMP	ESI,15
-   445 0000033F 7E 8D                           	JLE	L43
-   446 00000341 5B                              	POP	EBX
-   447 00000342 5E                              	POP	ESI
-   448 00000343 5F                              	POP	EDI
-   449 00000344 5D                              	POP	EBP
-   450 00000345 C3                              	RET
+   394 000002D6 8A 0C 3E                        	MOV	CL,BYTE [ESI+EDI*1]
+   395 000002D9 0F AF 45 0C                     	IMUL	EAX,DWORD [12+EBP]
+   396 000002DD 03 55 10                        	ADD	EDX,DWORD [16+EBP]
+   397 000002E0 01 C2                           	ADD	EDX,EAX
+   398 000002E2 84 C9                           	TEST	CL,CL
+   399 000002E4 79 02                           	JNS	L35
+   400 000002E6 88 1A                           	MOV	BYTE [EDX],BL
+   401 000002E8                                 L35:
+   402 000002E8 88 C8                           	MOV	AL,CL
+   403 000002EA 83 E0 40                        	AND	EAX,64
+   404 000002ED 84 C0                           	TEST	AL,AL
+   405 000002EF 74 03                           	JE	L36
+   406 000002F1 88 5A 01                        	MOV	BYTE [1+EDX],BL
+   407 000002F4                                 L36:
+   408 000002F4 88 C8                           	MOV	AL,CL
+   409 000002F6 83 E0 20                        	AND	EAX,32
+   410 000002F9 84 C0                           	TEST	AL,AL
+   411 000002FB 74 03                           	JE	L37
+   412 000002FD 88 5A 02                        	MOV	BYTE [2+EDX],BL
+   413 00000300                                 L37:
+   414 00000300 88 C8                           	MOV	AL,CL
+   415 00000302 83 E0 10                        	AND	EAX,16
+   416 00000305 84 C0                           	TEST	AL,AL
+   417 00000307 74 03                           	JE	L38
+   418 00000309 88 5A 03                        	MOV	BYTE [3+EDX],BL
+   419 0000030C                                 L38:
+   420 0000030C 88 C8                           	MOV	AL,CL
+   421 0000030E 83 E0 08                        	AND	EAX,8
+   422 00000311 84 C0                           	TEST	AL,AL
+   423 00000313 74 03                           	JE	L39
+   424 00000315 88 5A 04                        	MOV	BYTE [4+EDX],BL
+   425 00000318                                 L39:
+   426 00000318 88 C8                           	MOV	AL,CL
+   427 0000031A 83 E0 04                        	AND	EAX,4
+   428 0000031D 84 C0                           	TEST	AL,AL
+   429 0000031F 74 03                           	JE	L40
+   430 00000321 88 5A 05                        	MOV	BYTE [5+EDX],BL
+   431 00000324                                 L40:
+   432 00000324 88 C8                           	MOV	AL,CL
+   433 00000326 83 E0 02                        	AND	EAX,2
+   434 00000329 84 C0                           	TEST	AL,AL
+   435 0000032B 74 03                           	JE	L41
+   436 0000032D 88 5A 06                        	MOV	BYTE [6+EDX],BL
+   437 00000330                                 L41:
+   438 00000330 83 E1 01                        	AND	ECX,1
+   439 00000333 84 C9                           	TEST	CL,CL
+   440 00000335 74 03                           	JE	L33
+   441 00000337 88 5A 07                        	MOV	BYTE [7+EDX],BL
+   442 0000033A                                 L33:
+   443 0000033A 46                              	INC	ESI
+   444 0000033B 83 FE 0F                        	CMP	ESI,15
+   445 0000033E 7E 8E                           	JLE	L43
+   446 00000340 5B                              	POP	EBX
+   447 00000341 5E                              	POP	ESI
+   448 00000342 5F                              	POP	EDI
+   449 00000343 5D                              	POP	EBP
+   450 00000344 C3                              	RET
